@@ -1,9 +1,9 @@
 // PopupChat - a one-screen system to share things locally with your friends via WIFI
 // based on: Captive Portal by: M. Ray Burnette 20150831
 // homo est bulae
-#include <ESP8266WiFi.h>
-#include "./DNSServer.h"                  // Patched lib
-#include <ESP8266WebServer.h>
+#include <WiFi.h>
+#include <DNSServer.h>                 // Patched lib
+#include <WebServer.h>
 
 // config
 #define CHATNAME "Instant Anonymous Chatroom"
@@ -30,7 +30,7 @@ IPAddress APIP(10, 10, 10, 1);    // Private network for server
 // state:
 String allMsgs="<i>*system restarted*</i>";
 unsigned long bootTime=0, lastActivity=0, lastTick=0, tickCtr=0; // timers
-DNSServer dnsServer; ESP8266WebServer webServer(80); // standard api servers
+DNSServer dnsServer; WebServer webServer(80); // standard api servers
 void em(String s){ Serial.print(s); } 
 void emit(String s){ Serial.println(s); } // debugging
 String input(String argName) {
